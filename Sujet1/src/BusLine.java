@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BusLine {
     private final String name;
-    private final Map<String, Integer> segmentTimes;
+    private final Map<List<BusStop>, Integer> segmentTimes;
     int departureTime;
 
     public BusLine(String name, int departureTime) {
@@ -17,7 +19,9 @@ public class BusLine {
     }
 
     public void addSegmentTime(BusStop fromStop, BusStop toStop, int time) {
-        String segmentKey = fromStop.getName() + "-" + toStop.getName();
+        List<BusStop> segmentKey = new ArrayList<>();
+        segmentKey.add(fromStop);
+        segmentKey.add(toStop);
         segmentTimes.put(segmentKey, time);
     }
 
