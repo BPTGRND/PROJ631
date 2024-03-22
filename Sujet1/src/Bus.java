@@ -5,6 +5,33 @@ public class Bus {
     public Bus() {}
 
     // METHODS
+
+    // METHODS FOR GET ALL PATHS BETWEEN TWO STOPS
+    public List<List<String>> allPaths(BusStopV2 start, BusStopV2 end) {
+        List<List<String>> allPaths = new ArrayList<>();
+        List<String> currentPath = new ArrayList<>();
+        currentPath.add(start.getName());
+        explorePaths(start, end, currentPath, allPaths);
+        return allPaths;
+    }
+    private void explorePaths(BusStopV2 currentStop, BusStopV2 end, List<String> currentPath, List<List<String>> allPaths) {
+        if (currentStop == end) {
+            allPaths.add(new ArrayList<>(currentPath));
+            return;
+        }
+
+        for (Map.Entry<BusStopV2, Integer> entry : currentStop.getChildrenMap().entrySet()) {
+            BusStopV2 nextStop = entry.getKey();
+            if (!currentPath.contains(nextStop.getName())) {
+                currentPath.add(nextStop.getName());
+                explorePaths(nextStop, end, currentPath, allPaths);
+                currentPath.removeLast();
+            }
+        }
+    }
+
+
+
     public List<String> shortest(BusStopV2 start, BusStopV2 end) {
         List<String> shortestPath = new ArrayList<>();
         shortestPath.add(start.getName());
@@ -75,5 +102,9 @@ public class Bus {
         }
 
         return path;
+    }
+
+    public List<String> foremost(BusStopV2 start, BusStopV2 end, List<BusLineV2> busLines) {
+        return null;
     }
 }

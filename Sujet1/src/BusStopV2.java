@@ -18,12 +18,12 @@ public class BusStopV2 {
         return name;
     }
 
+    public Map<BusStopV2, Integer> getChildrenMap() {
+        return childrenMap;
+    }
+
     // METHODS
     public void addChild(BusStopV2 busStop, int travelTime) {
         childrenMap.put(busStop, travelTime);
-    }
-
-    public Map<BusStopV2, Integer> getChildrenMap() {
-        return childrenMap;
     }
 }
