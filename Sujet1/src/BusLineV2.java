@@ -4,9 +4,11 @@ public class BusLineV2 {
     // ATTRIBUTS
     private final List<BusStopV2> path;
     private final int departureTime;
+    private final String name;
 
     // CONSTRUCTOR
-    public BusLineV2(List<BusStopV2> path, int departureTime) {
+    public BusLineV2(List<BusStopV2> path, int departureTime, String name) {
+        this.name = name;
         this.path = path;
         this.departureTime = departureTime;
     }

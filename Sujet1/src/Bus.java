@@ -124,7 +124,7 @@ public class Bus {
             System.out.print("Enter departure time for path " + displayPath(path) + ": ");
             int departureTime = scanner.nextInt();
 
-            BusLineV2 busLine = new BusLineV2(path, departureTime);
+            BusLineV2 busLine = new BusLineV2(path, departureTime, "");
 
             int totalTravelTime = busLine.getTotalTime();
             int arrivalTime = busLine.getDepartureTime() + totalTravelTime;
