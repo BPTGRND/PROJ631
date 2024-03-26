@@ -5,16 +5,15 @@ public class Bus {
     public Bus() {}
 
     // METHODS
-
-    // METHODS FOR GET ALL PATHS BETWEEN TWO STOPS
-    public List<List<String>> allPaths(BusStopV2 start, BusStopV2 end) {
-        List<List<String>> allPaths = new ArrayList<>();
-        List<String> currentPath = new ArrayList<>();
-        currentPath.add(start.getName());
+    // METHOD TO GET ALL PATHS BETWEEN TWO BUS STOPS
+    public List<List<BusStopV2>> allPaths(BusStopV2 start, BusStopV2 end) {
+        List<List<BusStopV2>> allPaths = new ArrayList<>();
+        List<BusStopV2> currentPath = new ArrayList<>();
+        currentPath.add(start);
         explorePaths(start, end, currentPath, allPaths);
         return allPaths;
     }
-    private void explorePaths(BusStopV2 currentStop, BusStopV2 end, List<String> currentPath, List<List<String>> allPaths) {
+    private void explorePaths(BusStopV2 currentStop, BusStopV2 end, List<BusStopV2> currentPath, List<List<BusStopV2>> allPaths) {
         if (currentStop == end) {
             allPaths.add(new ArrayList<>(currentPath));
             return;
@@ -22,35 +21,43 @@ public class Bus {
 
         for (Map.Entry<BusStopV2, Integer> entry : currentStop.getChildrenMap().entrySet()) {
             BusStopV2 nextStop = entry.getKey();
-            if (!currentPath.contains(nextStop.getName())) {
-                currentPath.add(nextStop.getName());
+            if (!currentPath.contains(nextStop)) {
+                currentPath.add(nextStop);
                 explorePaths(nextStop, end, currentPath, allPaths);
                 currentPath.removeLast();
             }
         }
     }
 
+    // METHOD TO DISPLAY BUS STOP NAME IN A PATH
+    public List<String> displayPath(List<BusStopV2> path) {
+        List<String> names = new ArrayList<>();
+        for (BusStopV2 busStop : path) {
+            names.add(busStop.getName());
+        }
+        return names;
+    }
 
-
-    public List<String> shortest(BusStopV2 start, BusStopV2 end) {
-        List<String> shortestPath = new ArrayList<>();
-        shortestPath.add(start.getName());
+    // METHOD RETURNS SHORTEST PATH
+    public List<BusStopV2> shortest(BusStopV2 start, BusStopV2 end) {
+        List<BusStopV2> shortestPath = new ArrayList<>();
+        shortestPath.add(start);
 
         if (start == end) {
             return shortestPath;
         }
 
-        List<String> shortestPathFound = new ArrayList<>();
+        List<BusStopV2> shortestPathFound = new ArrayList<>();
         int shortestDistance = Integer.MAX_VALUE;
 
         for (Map.Entry<BusStopV2, Integer> entry : start.getChildrenMap().entrySet()) {
             BusStopV2 nextStop = entry.getKey();
 
-            if (!shortestPath.contains(nextStop.getName())) {
-                List<String> path = shortest(nextStop, end);
+            if (!shortestPath.contains(nextStop)) {
+                List<BusStopV2> path = shortest(nextStop, end);
 
                 if (!path.isEmpty()) {
-                    path.addFirst(start.getName());
+                    path.addFirst(start);
                     int distance = path.size();
 
                     if (distance < shortestDistance) {
@@ -63,7 +70,8 @@ public class Bus {
         return shortestPathFound;
     }
 
-    public List<String> fastest(BusStopV2 start, BusStopV2 end) {
+    // METHOD RETURNS FASTEST PATH
+    public List<BusStopV2> fastest(BusStopV2 start, BusStopV2 end) {
         Map<BusStopV2, Integer> distances = new HashMap<>();
         Map<BusStopV2, BusStopV2> predecessors = new HashMap<>();
         PriorityQueue<BusStopV2> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(distances::get));
@@ -93,18 +101,41 @@ public class Bus {
             }
         }
 
-        List<String> path = new ArrayList<>();
+        List<BusStopV2> path = new ArrayList<>();
         BusStopV2 current = end;
 
         while (current != null) {
-            path.addFirst(current.getName());
+            path.addFirst(current);
             current = predecessors.get(current);
         }
 
         return path;
     }
 
-    public List<String> foremost(BusStopV2 start, BusStopV2 end, List<BusLineV2> busLines) {
-        return null;
+    // METHOD RETURNS FOREMOST PATH
+    public List<BusStopV2> foremost(BusStopV2 start, BusStopV2 end) {
+        Scanner scanner = new Scanner(System.in);
+        List<List<BusStopV2>> allPaths = allPaths(start, end);
+        List<BusStopV2> earliestArrivingBuses = new ArrayList<>();
+
+        int earliestArrivalTime = Integer.MAX_VALUE;
+
+        for (List<BusStopV2> path : allPaths) {
+            System.out.print("Enter departure time for path " + displayPath(path) + ": ");
+            int departureTime = scanner.nextInt();
+
+            BusLineV2 busLine = new BusLineV2(path, departureTime);
+
+            int totalTravelTime = busLine.getTotalTime();
+            int arrivalTime = busLine.getDepartureTime() + totalTravelTime;
+
+            if (arrivalTime < earliestArrivalTime) {
+                earliestArrivalTime = arrivalTime;
+                earliestArrivingBuses.clear();
+                earliestArrivingBuses.addAll(path);
+            }
+        }
+        scanner.close();
+        return earliestArrivingBuses;
     }
 }
