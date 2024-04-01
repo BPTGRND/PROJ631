@@ -12,8 +12,8 @@ Nous utilisons des graphes orientés pour représenter le réseau de bus. Chaque
 - **Calcul d'itinéraire** : Calculez le plus court chemin, le chemin le plus rapide ou le chemin arrivant le plus tôt entre deux arrêts de bus en prenant en compte les contraintes temporelles spécifiées.
 
 ## Installation
-Clonez ce dépôt sur votre machine locale :
-git clone https://github.com/votre_nom/projet-reseau-bus.git
+Clonez ce dépôt sur votre machine locale avec cette commande :
+git clone https://github.com/BPTGRND/PROJ631.git
 
 ## Utilisation
 
