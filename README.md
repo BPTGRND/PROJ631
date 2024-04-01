@@ -17,7 +17,7 @@ git clone `https://github.com/BPTGRND/PROJ631.git`
 
 ## Utilisation
 
-Assurez-vous de modifier la ligne 26 du programme pour bien récupérer les fichiers .txt.
+Assurez-vous de modifier la ligne 28 du programme pour bien récupérer les fichiers .txt.
 
 1. Exécutez le programme en exécutant le fichier `Main.java`.
 2. Suivez les instructions pour saisir les données du réseau de bus et spécifier les options de recherche d'itinéraire.
