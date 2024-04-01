@@ -13,7 +13,7 @@ Nous utilisons des graphes orientés pour représenter le réseau de bus. Chaque
 
 ## Installation
 Clonez ce dépôt sur votre machine locale avec cette commande :
-git clone https://github.com/BPTGRND/PROJ631.git
+git clone `https://github.com/BPTGRND/PROJ631.git`
 
 ## Utilisation
 
