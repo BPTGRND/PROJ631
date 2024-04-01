@@ -1,4 +1,4 @@
-# Réseau de Bus - Gestion des Itinéraires
+# Gestion d'un réseau de bus
 
 Ce projet vise à modéliser un réseau de bus en utilisant des structures de données appropriées pour prendre en compte les contraintes horaires, les jours fériés, les nuits et les vacances. L'objectif est de permettre aux utilisateurs de saisir des données relatives au réseau de bus, de calculer des itinéraires entre deux arrêts de bus avec plusieurs options (le plus court, le plus rapide, le plus tôt) et de fournir des résultats pertinents en fonction des contraintes spécifiées.
 
