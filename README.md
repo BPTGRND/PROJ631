@@ -22,7 +22,3 @@ Assurez-vous de modifier la ligne 26 du programme pour bien récupérer les fich
 1. Exécutez le programme en exécutant le fichier `Main.java`.
 2. Suivez les instructions pour saisir les données du réseau de bus et spécifier les options de recherche d'itinéraire.
 3. Obtenez les résultats de la recherche d'itinéraire avec les différentes options disponibles.
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
