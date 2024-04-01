@@ -15,18 +15,13 @@ Nous utilisons des graphes orientés pour représenter le réseau de bus. Chaque
 Clonez ce dépôt sur votre machine locale :
 git clone https://github.com/votre_nom/projet-reseau-bus.git
 
+## Utilisation
 
 Assurez-vous de modifier la ligne 26 du programme pour bien récupérer les fichiers .txt.
-
-## Utilisation
 
 1. Exécutez le programme en exécutant le fichier `Main.java`.
 2. Suivez les instructions pour saisir les données du réseau de bus et spécifier les options de recherche d'itinéraire.
 3. Obtenez les résultats de la recherche d'itinéraire avec les différentes options disponibles.
-
-## Contribution
-
-Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez ouvrir une pull request ou soumettre un problème pour discuter des changements proposés.
 
 ## Licence
 
