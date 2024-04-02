@@ -18,8 +18,8 @@ public class Main {
         Edge edge6 = new Edge(busStop5, busStop4, 20);
 
         Main main = new Main();
-        System.out.println(STR."Shortest: \{main.displayPath(main.fastest(busStop1, busStop4))}");
-        System.out.println(STR."Fastest: \{main.displayPath(main.shortest(busStop1, busStop4))}");
+        System.out.println(STR."Shortest: \{main.displayPath(main.shortest(busStop1, busStop4))}");
+        System.out.println(STR."Fastest: \{main.displayPath(main.fastest(busStop1, busStop4))}");
         System.out.println(STR."Foremost: \{main.displayPath(main.foremost(busStop1, busStop4))}");
         System.out.println("\n");
 
