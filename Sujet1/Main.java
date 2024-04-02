@@ -25,7 +25,7 @@ public class Main {
 
 
 
-        Ligne ligne = new Ligne("C:/Users/bapti/Desktop/PROJ631/Sujet1_V2/2_Piscine-Patinoire_Campus.txt");
+        Ligne ligne = new Ligne("C:/Users/bapti/Desktop/PROJ631/Sujet1/2_Piscine-Patinoire_Campus.txt");
         String regularPath = ligne.regular_path();
         Map<String, List<String>> regularSchedule = ligne.regular_date_go();
         List<BusStop> busStops = new ArrayList<>();
