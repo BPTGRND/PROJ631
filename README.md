@@ -1,4 +1,4 @@
-# Gestion d'un réseau de bus
+# Sujet 1 - Gestion d'un réseau de bus
 
 Ce projet vise à modéliser un réseau de bus en utilisant des structures de données appropriées pour prendre en compte les contraintes horaires, les jours fériés, les nuits et les vacances. L'objectif est de permettre aux utilisateurs de saisir des données relatives au réseau de bus, de calculer des itinéraires entre deux arrêts de bus avec plusieurs options (le plus court, le plus rapide, le plus tôt) et de fournir des résultats pertinents en fonction des contraintes spécifiées.
 
@@ -22,3 +22,5 @@ Assurez-vous de modifier la ligne 28 du programme pour bien récupérer les fich
 1. Exécutez le programme en exécutant le fichier `Main.java`.
 2. Suivez les instructions pour saisir les données du réseau de bus et spécifier les options de recherche d'itinéraire.
 3. Obtenez les résultats de la recherche d'itinéraire avec les différentes options disponibles.
+
+# Sujet 2 - Stockage de Données Personnelles
