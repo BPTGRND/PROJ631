@@ -5,3 +5,6 @@ class Donnee:
 
     def get_id(self):
         return self.id
+
+    def get_taille(self):
+        return self.taille

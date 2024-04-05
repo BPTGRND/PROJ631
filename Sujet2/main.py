@@ -5,14 +5,14 @@ from systeme import Systeme
 
 if __name__ == "__main__":
     donnee0 = Donnee(0, 10)
-    donnee1 = Donnee(1, 40)
-    donnee2 = Donnee(2, 30)
+    donnee1 = Donnee(1, 10)
+    donnee2 = Donnee(2, 20)
     donnee3 = Donnee(3, 10)
     donnee4 = Donnee(4, 20)
     donnee5 = Donnee(5, 10)
     donnee6 = Donnee(6, 20)
-    donnee7 = Donnee(7, 30)
-    donnee8 = Donnee(8, 20)
+    donnee7 = Donnee(7, 10)
+    donnee8 = Donnee(8, 10)
 
     noeud0 = Noeud(0, 40)
     noeud1 = Noeud(1, 40)
@@ -65,3 +65,8 @@ if __name__ == "__main__":
     utilisateur6.ajouter_noeud_accessible(noeud1.get_id())
 
     system = Systeme(1)
+    system.set_liste_donnees([donnee0, donnee1, donnee2, donnee3, donnee4, donnee5, donnee6, donnee7, donnee8])
+    system.set_liste_noeuds([noeud0, noeud1, noeud2, noeud3, noeud4])
+    system.set_liste_utilisateurs([utilisateur0, utilisateur3, utilisateur4, utilisateur5, utilisateur6])
+
+    system.placer_donnees()
