@@ -1,72 +1,38 @@
-from donnee import Donnee
-from utilisateur import Utilisateur
-from noeud import Noeud
-from systeme import Systeme
+from data import Data
+from user import User
+from systemnode import SystemNode
+from system import System
 
 if __name__ == "__main__":
-    donnee0 = Donnee(0, 10)
-    donnee1 = Donnee(1, 10)
-    donnee2 = Donnee(2, 20)
-    donnee3 = Donnee(3, 10)
-    donnee4 = Donnee(4, 20)
-    donnee5 = Donnee(5, 10)
-    donnee6 = Donnee(6, 20)
-    donnee7 = Donnee(7, 10)
-    donnee8 = Donnee(8, 10)
+    data_list = [
+        Data(0, 10),
+        Data(1, 20),
+        Data(2, 40),
+        Data(3, 10),
+        Data(4, 10),
+        Data(5, 30),
+        Data(6, 10),
+        Data(7, 10),
+        Data(8, 20)
+    ]
 
-    noeud0 = Noeud(0, 40)
-    noeud1 = Noeud(1, 40)
-    noeud2 = Noeud(2, 50)
-    noeud3 = Noeud(3, 40)
-    noeud4 = Noeud(4, 50)
-    noeud0.ajouter_noeud_accessible(noeud1.get_id())
-    noeud0.ajouter_noeud_accessible(noeud2.get_id())
-    noeud0.ajouter_noeud_accessible(noeud3.get_id())
-    noeud0.ajouter_noeud_accessible(noeud4.get_id())
-    noeud1.ajouter_noeud_accessible(noeud0.get_id())
-    noeud1.ajouter_noeud_accessible(noeud2.get_id())
-    noeud1.ajouter_noeud_accessible(noeud3.get_id())
-    noeud1.ajouter_noeud_accessible(noeud4.get_id())
-    noeud2.ajouter_noeud_accessible(noeud0.get_id())
-    noeud2.ajouter_noeud_accessible(noeud1.get_id())
-    noeud2.ajouter_noeud_accessible(noeud3.get_id())
-    noeud2.ajouter_noeud_accessible(noeud4.get_id())
-    noeud3.ajouter_noeud_accessible(noeud0.get_id())
-    noeud3.ajouter_noeud_accessible(noeud1.get_id())
-    noeud3.ajouter_noeud_accessible(noeud2.get_id())
-    noeud3.ajouter_noeud_accessible(noeud4.get_id())
-    noeud4.ajouter_noeud_accessible(noeud0.get_id())
-    noeud4.ajouter_noeud_accessible(noeud1.get_id())
-    noeud4.ajouter_noeud_accessible(noeud2.get_id())
-    noeud4.ajouter_noeud_accessible(noeud3.get_id())
+    system_node_list = [
+        SystemNode(0, 50, {1: 1, 2: 3, 3: 3, 4: 1}),
+        SystemNode(1, 40, {0: 1, 2: 1, 3: 3, 4: 3}),
+        SystemNode(2, 50, {0: 3, 1: 1, 3: 1, 4: 3}),
+        SystemNode(3, 40, {0: 3, 1: 3, 2: 1, 4: 1}),
+        SystemNode(4, 40, {0: 1, 1: 3, 2: 3, 3: 1})
+    ]
 
-    utilisateur0 = Utilisateur(0)
-    utilisateur1 = Utilisateur(1)
-    utilisateur2 = Utilisateur(2)
-    utilisateur3 = Utilisateur(3)
-    utilisateur4 = Utilisateur(4)
-    utilisateur5 = Utilisateur(5)
-    utilisateur6 = Utilisateur(6)
-    utilisateur0.ajouter_donnee_interet(donnee0.get_id())
-    utilisateur0.ajouter_noeud_accessible(noeud4.get_id())
-    utilisateur1.ajouter_donnee_interet(donnee1.get_id())
-    utilisateur1.ajouter_donnee_interet(donnee2.get_id())
-    utilisateur1.ajouter_noeud_accessible(noeud4.get_id())
-    utilisateur2.ajouter_donnee_interet(donnee5.get_id())
-    utilisateur2.ajouter_donnee_interet(donnee3.get_id())
-    utilisateur2.ajouter_noeud_accessible(noeud4.get_id())
-    utilisateur3.ajouter_donnee_interet(donnee4.get_id())
-    utilisateur3.ajouter_noeud_accessible(noeud3.get_id())
-    utilisateur4.ajouter_donnee_interet(donnee6.get_id())
-    utilisateur4.ajouter_noeud_accessible(noeud2.get_id())
-    utilisateur5.ajouter_donnee_interet(donnee8.get_id())
-    utilisateur5.ajouter_noeud_accessible(noeud1.get_id())
-    utilisateur6.ajouter_donnee_interet(donnee7.get_id())
-    utilisateur6.ajouter_noeud_accessible(noeud1.get_id())
+    user_list = [
+        User(0, [0], 0),
+        User(1, [1, 2], 0),
+        User(2, [3, 5], 0),
+        User(3, [4], 1),
+        User(4, [6], 2),
+        User(5, [8], 3),
+        User(6, [7], 3)
+    ]
 
-    system = Systeme(1)
-    system.set_liste_donnees([donnee0, donnee1, donnee2, donnee3, donnee4, donnee5, donnee6, donnee7, donnee8])
-    system.set_liste_noeuds([noeud0, noeud1, noeud2, noeud3, noeud4])
-    system.set_liste_utilisateurs([utilisateur0, utilisateur3, utilisateur4, utilisateur5, utilisateur6])
-
-    system.placer_donnees()
+    system = System(data_list, system_node_list, user_list)
+    system.place_data()

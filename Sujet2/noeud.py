@@ -11,6 +11,12 @@ class Noeud:
     def get_capacite_memoire(self):
         return self.capacite_memoire
 
+    def get_noeuds_accessibles(self):
+        return self.liste_noeuds_accessibles
+
+    def get_donnees_stockees(self):
+        return self.liste_donnees_stockees
+
     def ajouter_noeud_accessible(self, noeud):
         self.liste_noeuds_accessibles.append(noeud)
 
