@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1408f6b1-e303-45e5-baab-218b249c1342" name="Changes" comment="Modification de la structure de données principale">
-      <change beforePath="$PROJECT_DIR$/Sujet2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sujet2/noeud.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/noeud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sujet2/systeme.py" beforeDir="false" />
+    <list default="true" id="1408f6b1-e303-45e5-baab-218b249c1342" name="Changes" comment="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle). + Suppression des anciens fichiers">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sujet2/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sujet2/system.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sujet2/systemnode.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/systemnode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sujet2/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sujet2/user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,12 +85,30 @@
       <option name="project" value="LOCAL" />
       <updated>1712321869347</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle).">
+      <option name="closed" value="true" />
+      <created>1713258065829</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713258065829</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle). + Suppression des anciens fichiers">
+      <option name="closed" value="true" />
+      <created>1713258186335</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713258186335</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout de la structure de données principale" />
     <MESSAGE value="Modification de la structure de données principale" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification de la structure de données principale" />
+    <MESSAGE value="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle)." />
+    <MESSAGE value="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle). + Suppression des anciens fichiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Amélioration de la structure de données principale et ajout de la fonction place_data de la question 2 (fonction opérationnelle). + Suppression des anciens fichiers" />
   </component>
 </project>
