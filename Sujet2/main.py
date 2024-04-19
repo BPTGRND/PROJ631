@@ -30,8 +30,8 @@ if __name__ == "__main__":
         User(2, [3, 5], 0),
         User(3, [4], 1),
         User(4, [6], 2),
-        User(5, [8], 3),
-        User(6, [7], 3)
+        User(5, [4, 8], 3),
+        User(6, [0, 7], 3)
     ]
 
     system = System(data_list, system_node_list, user_list)
