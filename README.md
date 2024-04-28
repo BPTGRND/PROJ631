@@ -41,5 +41,5 @@ git clone `https://github.com/BPTGRND/PROJ631.git`
 
 ## Utilisation
 
-1. Lancez le programme en exécutant le fichier `main.py` dans le fichier Sujet2.
+1. Lancez le programme en exécutant le fichier `main.py` dans le dossier Sujet2.
 2. Obtenez les résultats du placement des données sur le système en fonctions des différentes contraintes.
