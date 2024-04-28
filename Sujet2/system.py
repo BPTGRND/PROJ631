@@ -8,6 +8,12 @@ class System:
         self.system_node_list = system_node_list
         self.user_list = user_list
 
+    # FUNCTION THAT RETURNS THE SIZE OF A DATA WITH HIS ID
+    def get_data_size(self, data_id):
+        for data in self.data_list:
+            if data.get_id() == data_id:
+                return data.get_size()
+
     # FUNCTION THAT RETURNS THE SHORTEST DISTANCE BETWEEN TWO NODES
     def get_shortest_distance_between_nodes(self, start_node_id, end_node_id):
         distances = {node.id: float('inf') for node in self.system_node_list}
@@ -110,40 +116,50 @@ class System:
         interested_users = []
         for user in self.user_list:
             if data_id in user.get_interest_data_ids():
-                interested_users.append(user)
+                interested_users.append(user.get_id())
         if not interested_users:
             print(f"Aucun utilisateur intéressé par la donnée {data_id}")
-            return
 
-        common_accessible_nodes = {}
-        for node in self.system_node_list:
-            distances = []
-            for user in interested_users:
-                distance = self.get_distance(user.get_id(), node.get_id())
+        node_distances = {}
+        for user_id in interested_users:
+            for node in self.system_node_list:
+                distance = self.get_distance(user_id, node.get_id())
                 if distance is not None:
-                    distances.append(distance)
-            if len(distances) == len(interested_users) and len(set(distances)) == 1:
-                common_accessible_nodes[node.get_id()] = distances[0]
+                    if node.get_id() not in node_distances:
+                        node_distances[node.get_id()] = []
+                    node_distances[node.get_id()].append((user_id, distance))
 
-        if not common_accessible_nodes:
-            print(f"Aucun nœud accessible pour placer la donnée {data_id}")
+        if not node_distances:
+            print(f"Aucun nœud accessible aux utilisateurs intéressés par la donnée {data_id}")
             return
 
-        max_capacity_node_id = max(common_accessible_nodes, key=lambda x: (common_accessible_nodes[x],
-                                                                           self.get_remaining_size(next(
-                                                                               (node for node in self.system_node_list
-                                                                                if node.get_id() == x), None))))
-        max_capacity_node = next((node for node in self.system_node_list if node.get_id() == max_capacity_node_id),
-                                 None)
-        if max_capacity_node is not None:
-            print(
-                f"Capacité du nœud {max_capacity_node.get_id()} avant l'ajout de la donnée : {self.get_remaining_size(max_capacity_node)}")
-            max_capacity_node.add_local_data(data_id)
-            print(f"Donnée {data_id} placée avec succès sur le nœud {max_capacity_node.get_id()}")
-            print(
-                f"Capacité du nœud {max_capacity_node.get_id()} après l'ajout de la donnée : {self.get_remaining_size(max_capacity_node)}\n")
-        else:
+        min_total_distance = float('inf')
+        priority_node_id = None
+        for node_id, user_distances in node_distances.items():
+            total_distance = sum(distance for _, distance in user_distances)
+            if total_distance < min_total_distance:
+                min_total_distance = total_distance
+                priority_node_id = node_id
+            elif total_distance == min_total_distance:
+                priority_node_id = node_id
+
+        if priority_node_id is None:
             print(f"Aucun nœud n'a suffisamment de mémoire disponible pour placer la donnée {data_id}")
+            return
+
+        for node in self.system_node_list:
+            if node.get_id() == priority_node_id:
+                if self.get_data_size(data_id) <= self.get_remaining_size(node):
+                    print(
+                        f"Capacité du noeud {node.get_id()} avant l'ajout de la donnée : {self.get_remaining_size(node)}")
+                    node.add_local_data(data_id)
+                    print(
+                        f"Donnée {data_id} ({self.get_data_size(data_id)}) placée avec succès sur le nœud {node.get_id()}")
+                    print(
+                        f"Capacité du noeud {node.get_id()} après l'ajout de la donnée : {self.get_remaining_size(node)}")
+                    print("\n")
+                    return
+        print(f"Aucun nœud n'a suffisamment de mémoire disponible pour placer la donnée {data_id}")
 
     # FUNCTION THAT PLACES ALL THE DATA ON THE SYSTEM
     def place_data(self):
