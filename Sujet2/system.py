@@ -14,26 +14,6 @@ class System:
             if data.get_id() == data_id:
                 return data.get_size()
 
-    # FUNCTION THAT RETURNS THE SHORTEST DISTANCE BETWEEN TWO NODES
-    def get_shortest_distance_between_nodes(self, start_node_id, end_node_id):
-        distances = {node.id: float('inf') for node in self.system_node_list}
-        visited = set()
-        distances[start_node_id] = 0
-        heap = [(0, start_node_id)]
-        while heap:
-            current_distance, current_node_id = heapq.heappop(heap)
-            if current_node_id in visited:
-                continue
-            if current_node_id == end_node_id:
-                return current_distance
-            visited.add(current_node_id)
-            for neighbor_id, weight in self.system_node_list[current_node_id].accessible_node_ids.items():
-                distance = current_distance + weight
-                if distance < distances[neighbor_id]:
-                    distances[neighbor_id] = distance
-                    heapq.heappush(heap, (distance, neighbor_id))
-        return None
-
     # FUNCTION THAT RETURNS THE SHORTEST DISTANCE BETWEEN AN USER AND A NODE
     def get_distance(self, user_id, node_id):
         distances = {node.id: float('inf') for node in self.system_node_list}
