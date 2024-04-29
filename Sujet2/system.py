@@ -116,7 +116,7 @@ class System:
         min_total_distance = float('inf')
         priority_node_id = None
         for node_id, user_distances in node_distances.items():
-            total_distance = sum(distance for _, distance in user_distances)
+            total_distance = sum(distance ** 2 for _, distance in user_distances)
             if total_distance < min_total_distance:
                 min_total_distance = total_distance
                 priority_node_id = node_id
